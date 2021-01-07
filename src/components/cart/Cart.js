@@ -5,9 +5,11 @@ import {useGlobalContext} from "../../context";
 import EmptyCart from "./EmptyCart";
 import CartList from "./CartList";
 import CartTotals from "./CartTotals";
+import {useHistory} from 'react-router-dom';
 
 function Cart(props) {
     const {cart} = useGlobalContext();
+    const {history} = useHistory();
     if (cart.length === 0) {
         return <EmptyCart/>
     }
@@ -16,7 +18,7 @@ function Cart(props) {
             <Title name="your" title="cart"/>
             <CartColumns/>
             <CartList/>
-            <CartTotals/>
+            <CartTotals history={history}/>
         </div>
     );
 }

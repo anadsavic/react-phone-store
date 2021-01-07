@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import {useGlobalContext} from "../../context";
 import {Link} from "react-router-dom";
+import PaypallButton from "./PaypallButton";
 
-function CartTotals(props) {
+function CartTotals({history}) {
     const {cartSubtotal, cartTax, cartTotal, clearCart, addTotals, cart} = useGlobalContext();
     useEffect(() => {
         addTotals();
@@ -36,6 +37,7 @@ function CartTotals(props) {
                             </span>
                             <strong> $ {cartTotal}</strong>
                         </h5>
+                        <PaypallButton total={cartTotal} clearCart={clearCart} history={history} />
                     </div>
                 </div>
             </div>
